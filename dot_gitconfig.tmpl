@@ -14,13 +14,13 @@ pushNonFastForward = false
 statusHints = false
 
 {{ if eq .chezmoi.hostname "pro-crastinator" }}
-[includeIf "gitdir:~"]
+[includeIf "gitdir:**"]
 path = ~/.gitconfig-github
 
-[includeIf "gitdir:~"]
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:**/**"]
 path = ~/.gitconfig-gitlab
 
-[includeIf "gitdir:~"]
+[includeIf "hasconfig:remote.*.url:https://huggingface.co/**"]
 path = ~/.gitconfig-hf
 {{ end }}
 
