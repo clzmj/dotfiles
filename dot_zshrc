@@ -1,0 +1,31 @@
+zstyle ':omz:update' mode auto
+
+ZSH_THEME=""
+
+plugins=(
+  aliases
+  git
+  macos
+  python
+  qrcode
+  terraform
+  tmux
+)
+
+source $ZSH/oh-my-zsh.sh
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source <(fzf --zsh)
+
+for file in ~/.bin/**/*.zsh(N); do
+  source "$file"
+done
+
+TRAPINT() {
+  printf '\033[?25h'
+  return $(( 128 + $1 ))
+}

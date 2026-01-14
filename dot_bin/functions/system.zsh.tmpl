@@ -1,0 +1,32 @@
+sysupdate() {
+  echo "Updating brew packages..."
+  brew update
+
+  echo "Upgrading brew packages..."
+  brew upgrade
+
+  echo "Updating $HOMEBREW_BREWFILE file..."
+  brew bundle dump --force --file=$HOMEBREW_BREWFILE
+
+  echo "Updating chezmoi $HOMEBREW_BREWFILE..."
+  chezmoi add $HOMEBREW_BREWFILE
+
+  echo "Cleaning up brew packages..."
+  brew bundle cleanup --force --file=$HOMEBREW_BREWFILE --zap
+
+  echo "Unaliasing all commands..."
+  unalias -m "*"
+
+  echo "Reloading zsh..."
+  source ~/.zshrc
+
+  {{ if eq .chezmoi.hostname "pro-crastinator" }}
+  echo "Updating chezmoi public files..."
+  chezmoi re-add
+
+  echo "Updating chezmoi private files..."
+  chezmoi --source ~/.local/share/chezmoi-private re-add
+  {{ end }}
+
+  echo "System updated!"
+}

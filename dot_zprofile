@@ -1,0 +1,24 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export HOMEBREW_BREWFILE=~/.Brewfile
+export CPPFLAGS=$CPPFLAGS:-I/opt/homebrew/include
+export CPPFLAGS=$CPPFLAGS:-I/opt/homebrew/opt/openjdk/include
+export EDITOR=hx
+export HOMEBREW_NO_ENV_HINTS=1
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LDFLAGS=-L/opt/homebrew/lib
+export NODE_NO_WARNINGS=1
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export PATH=/opt/homebrew/opt/llvm/bin:$PATH
+export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
+export PATH=/opt/homebrew/opt/postgresql@17/bin:$PATH
+export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+export PATH=/opt/homebrew/opt/rustup/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=~/.cargo/bin:$PATH
+export PATH=~/.config/composer/vendor/bin:$PATH
+export PATH=~/.local/bin:$PATH
+export PATH=~/go/bin:$PATH
+export VISUAL=$EDITOR
+export ZSH=~/.oh-my-zsh

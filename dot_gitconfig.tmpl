@@ -1,0 +1,104 @@
+[alias]
+undo = reset --soft HEAD^
+
+[core]
+attributesfile = ~/.gitattributes
+compression = 9
+excludesfile = ~/.gitignore
+preloadindex = true
+whitespace = error
+
+[advice]
+addEmptyPathspec = false
+pushNonFastForward = false
+statusHints = false
+
+{{ if eq .chezmoi.hostname "pro-crastinator" }}
+[includeIf "gitdir:~"]
+path = ~/.gitconfig-github
+
+[includeIf "gitdir:~"]
+path = ~/.gitconfig-gitlab
+
+[includeIf "gitdir:~"]
+path = ~/.gitconfig-hf
+{{ end }}
+
+[init]
+defaultBranch = main
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+
+[status]
+branch = true
+showStash = true
+showUntrackedFiles = all
+
+[diff]
+context = 3
+renames = copies
+interHunkContext = 10
+
+[diff "lockfile"]
+textconv = echo "Lock file changed - content omitted"
+
+[pager]
+diff = diff-so-fancy | $PAGER
+
+[diff-so-fancy]
+markEmptyLines = false
+
+[color "diff"]
+meta = black bold
+frag = magenta
+context = white
+whitespace = yellow reverse
+old = red
+
+[interactive]
+diffFilter = diff-so-fancy --patch
+singlekey = true
+
+[push]
+autoSetupRemote = true
+default = current
+followTags = true
+
+[pull]
+default = current
+rebase = true
+
+[rebase]
+autoStash = true
+missingCommitsCheck = warn
+
+[log]
+abbrevCommit = true
+graphColors = blue,yellow,cyan,magenta,green,red
+
+[color "decorate"]
+HEAD = red
+branch = blue
+tag = yellow
+remoteBranch = magenta
+
+[color "branch"]
+current = magenta
+local = default
+remote = yellow
+upstream = green
+plain = blue
+
+[branch]
+sort = -committerdate
+
+[tag]
+sort = -taggerdate
+
+[pager]
+branch = false
+tag = false
