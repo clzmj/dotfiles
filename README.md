@@ -38,18 +38,14 @@ Edit `~/.local/share/chezmoi/dot_Brewfile` to add or remove packages:
 $EDITOR ~/.local/share/chezmoi/dot_Brewfile
 ```
 
-- Remove any `brew`, `cask`, or `tap` lines for packages you don't need
-- Add new packages following the same format:
-  ```
-  brew "package-name"
-  cask "app-name"
-  tap "org/repo"
-  ```
+- **Keep it minimal** - delete any `brew`, `cask`, or `tap` lines for packages you don't need
+- You can always install packages directly with `brew install <package>` later
+- The `sysupdate` command will automatically update your Brewfile when you install new packages
 
 ### 3. Install packages with Homebrew Bundle
 
 ```bash
-brew bundle --file=~/.Brewfile
+brew bundle install --file=~/.Brewfile
 ```
 
 This will install all taps, brews, casks, and other dependencies defined in your Brewfile.
