@@ -6,6 +6,23 @@ chezmoi init clzmj
 
 Personal dotfiles managed with [chezmoi](https://chezmoi.io/).
 
+## Prerequisites
+
+Before using these dotfiles, you must have the following installed:
+
+- **git** - Required for cloning repositories
+- **Homebrew** - Package manager for macOS ([brew.sh](https://brew.sh))
+- **chezmoi** - Dotfile manager (`brew install chezmoi`)
+
+### Additional Manual Setup
+
+The following are **not included in the Brewfile** and require manual installation/initialization:
+
+| Dependency | Installation | Notes |
+|------------|--------------|-------|
+| **Oh-My-Zsh** | `sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"` | Required for shell to work properly |
+| **Rust toolchain** | `rustup-init && rustup default stable` | `rustup` is in Brewfile but needs initialization |
+
 ## Setup
 
 ### 1. Fork and clone the repository
